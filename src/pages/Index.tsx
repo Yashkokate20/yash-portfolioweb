@@ -5,6 +5,14 @@ import LoadingScreen from '../components/LoadingScreen';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
+import SkillsSection from '../components/SkillsSection';
+import ExperienceSection from '../components/ExperienceSection';
+import ProjectsSection from '../components/ProjectsSection';
+import AwardsSection from '../components/AwardsSection';
+import CertificationsSection from '../components/CertificationsSection';
+import ExtracurricularSection from '../components/ExtracurricularSection';
+import ContactSection from '../components/ContactSection';
+import FooterSection from '../components/FooterSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,30 +53,14 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <AboutSection />
-      
-      {/* Placeholder sections for future development */}
-      <section id="skills" className="py-20 px-6 text-center">
-        <h2 className="text-4xl gradient-text mb-8">Core Competencies</h2>
-        <p className="text-muted-foreground">Skills section coming soon...</p>
-      </section>
-      
-      <section id="experience" className="py-20 px-6 text-center">
-        <h2 className="text-4xl gradient-text mb-8">Professional Journey</h2>
-        <p className="text-muted-foreground">Experience timeline coming soon...</p>
-      </section>
-      
-      <section id="projects" className="py-20 px-6 text-center">
-        <h2 className="text-4xl gradient-text mb-8">Featured Projects</h2>
-        <p className="text-muted-foreground">Projects showcase coming soon...</p>
-      </section>
-      
-      <section id="contact" className="py-20 px-6 text-center">
-        <h2 className="text-4xl gradient-text mb-8">Get In Touch</h2>
-        <p className="text-muted-foreground mb-8">Ready to discuss opportunities</p>
-        <div className="glass p-8 rounded-lg max-w-md mx-auto">
-          <p className="text-lg">Contact form coming soon...</p>
-        </div>
-      </section>
+      <SkillsSection />
+      <ExperienceSection />
+      <ProjectsSection />
+      <AwardsSection />
+      <CertificationsSection />
+      <ExtracurricularSection />
+      <ContactSection />
+      <FooterSection />
     </div>
   );
 };
