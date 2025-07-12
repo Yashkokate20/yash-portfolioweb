@@ -12,8 +12,8 @@ export const siteConfig = {
 
   // Contact information (used across multiple components)
   contact: {
-    email: "hello@yashkokate.com",
-    phone: "+1 (555) 123-4567",
+    email: "yashkokate0801@gmail.com",
+    phone: "+91 8928719893",
     location: "New York, NY",
     timezone: "EST",
     availability: "Open to opportunities"
