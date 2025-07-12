@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { aboutData, aboutConfig } from '../data';
 import profileImage from '../assets/yash-profile.png';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -61,15 +62,13 @@ const AboutSection = () => {
 
           <div ref={contentRef} className="space-y-6">
             <h2 className="text-4xl md:text-5xl font-light gradient-text">
-              About Me
+              {aboutData.title}
             </h2>
             <p className="text-lg/relaxed text-muted-foreground font-light">
-              I'm a passionate trader and value investor with expertise in quantitative analysis 
-              and FinTech innovation. My approach combines traditional investment principles 
-              with cutting-edge technology to identify and capitalize on market opportunities.
+              {aboutData.bio}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
-              {['Trading', 'Analytics', 'FinTech', 'Investment'].map((skill, index) => (
+              {aboutData.skills.map((skill, index) => (
                 <div key={skill} className="glass text-center p-4 rounded-lg hover:glow-cyan transition-all">
                   <div className="text-sm font-medium">{skill}</div>
                 </div>

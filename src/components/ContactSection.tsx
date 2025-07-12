@@ -4,13 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { 
-  PaperPlaneTilt,
-  LinkedinLogo,
-  GithubLogo,
-  TwitterLogo,
-  EnvelopeSimple
-} from 'phosphor-react';
+import { PaperPlaneTilt } from 'phosphor-react';
+import { contactData, contactConfig } from '../data';
+import { useToast } from '../hooks/use-toast';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,6 +23,7 @@ const ContactSection = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -119,23 +116,30 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
-    
-    // You could add toast notification here
-    console.log('Form submitted:', formData);
+    try {
+      // For now, we'll simulate submission - Supabase integration will replace this
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Show success message
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      
+      // Reset form
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const socialLinks = [
-    { icon: LinkedinLogo, url: '#', label: 'LinkedIn', color: 'hover:text-neon-cyan' },
-    { icon: GithubLogo, url: '#', label: 'GitHub', color: 'hover:text-neon-purple' },
-    { icon: TwitterLogo, url: '#', label: 'Twitter', color: 'hover:text-neon-pink' },
-    { icon: EnvelopeSimple, url: 'mailto:yash@example.com', label: 'Email', color: 'hover:text-neon-orange' }
-  ];
+  const { socialLinks } = contactData;
 
   return (
     <section 
@@ -151,11 +155,11 @@ const ContactSection = () => {
           ref={titleRef}
           className="text-5xl md:text-6xl font-light text-center mb-8 gradient-text"
         >
-          Get In Touch
+          {contactData.title}
         </h2>
         
         <p className="text-center text-muted-foreground mb-16 text-lg">
-          Ready to discuss opportunities in trading, investment, or FinTech development
+          {contactData.subtitle}
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -206,12 +210,12 @@ const ContactSection = () => {
                 {isSubmitting ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2" />
-                    Sending...
+                    {contactData.form.submittingText}
                   </div>
                 ) : (
                   <div className="flex items-center">
                     <PaperPlaneTilt className="mr-2" size={18} weight="light" />
-                    Send Message
+                    {contactData.form.submitText}
                   </div>
                 )}
               </Button>
@@ -224,11 +228,10 @@ const ContactSection = () => {
             <div className="glass p-8 rounded-lg text-center">
               <h3 className="text-2xl font-medium text-primary mb-4">Let's Connect</h3>
               <p className="text-foreground/80 mb-6 leading-relaxed">
-                I'm always interested in discussing new opportunities, sharing insights about financial markets, 
-                or collaborating on innovative FinTech projects.
+                {contactData.connectMessage}
               </p>
               <div className="text-accent font-medium">
-                yash.kokate@example.com
+                {contactData.email}
               </div>
             </div>
             

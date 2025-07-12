@@ -1,13 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  LinkedinLogo,
-  GithubLogo,
-  TwitterLogo,
-  EnvelopeSimple,
-  ArrowUp
-} from 'phosphor-react';
+import { ArrowUp } from 'phosphor-react';
+import { footerData, footerConfig } from '../data';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,21 +75,7 @@ const FooterSection = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const socialLinks = [
-    { icon: LinkedinLogo, url: '#', label: 'LinkedIn' },
-    { icon: GithubLogo, url: '#', label: 'GitHub' },
-    { icon: TwitterLogo, url: '#', label: 'Twitter' },
-    { icon: EnvelopeSimple, url: 'mailto:yash@example.com', label: 'Email' }
-  ];
-
-  const quickLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Awards', href: '#awards' },
-    { name: 'Contact', href: '#contact' }
-  ];
+  const { socialLinks, quickLinks } = footerData;
 
   return (
     <footer 
@@ -106,7 +87,7 @@ const FooterSection = () => {
         ref={particlesRef}
         className="absolute inset-0 pointer-events-none"
       >
-        {[...Array(20)].map((_, index) => (
+        {[...Array(footerConfig.particleCount)].map((_, index) => (
           <div
             key={index}
             className="particle absolute w-2 h-2 rounded-full bg-primary/30 glow-cyan"
@@ -127,11 +108,10 @@ const FooterSection = () => {
           {/* Brand Section */}
           <div className="space-y-4">
             <h3 className="text-2xl font-light gradient-text mb-4">
-              Yash Kokate
+              {footerData.brand.name}
             </h3>
             <p className="text-foreground/80 leading-relaxed">
-              Trader & Value Investor specializing in quantitative analysis, 
-              algorithmic trading, and financial technology innovation.
+              {footerData.brand.description}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -171,15 +151,15 @@ const FooterSection = () => {
             <div className="space-y-3">
               <p className="text-foreground/80">
                 <span className="text-accent">Email:</span><br />
-                yash.kokate@example.com
+                {footerData.contact.email}
               </p>
               <p className="text-foreground/80">
                 <span className="text-accent">Location:</span><br />
-                Mumbai, India
+                {footerData.contact.location}
               </p>
               <p className="text-foreground/80">
                 <span className="text-accent">Availability:</span><br />
-                Open to opportunities
+                {footerData.contact.availability}
               </p>
             </div>
           </div>
@@ -190,7 +170,7 @@ const FooterSection = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <p className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} Yash Kokate. All rights reserved.
+              © {footerData.copyright.year} {footerData.copyright.name}. All rights reserved.
             </p>
 
             {/* Back to Top */}
@@ -211,7 +191,7 @@ const FooterSection = () => {
         {/* Additional Info */}
         <div className="mt-8 pt-8 border-t border-primary/10 text-center">
           <p className="text-xs text-muted-foreground">
-            Built with React, GSAP, and modern web technologies • Designed for performance and accessibility
+            {footerData.additionalInfo}
           </p>
         </div>
       </div>
