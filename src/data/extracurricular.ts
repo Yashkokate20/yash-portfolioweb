@@ -129,7 +129,7 @@ export const extracurricularConfig = {
   animationConfig: {
     stagger: {
       amount: 1.2,
-      from: "random"
+      from: "start" as const
     },
     parallaxIntensity: 15
   }
