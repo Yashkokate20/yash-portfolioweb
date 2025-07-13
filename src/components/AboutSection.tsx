@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { aboutData, aboutConfig } from '../data';
-import profileImage from '../assets/yash-profile.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,8 +51,8 @@ const AboutSection = () => {
             <div className="relative inline-block">
               <div className="w-80 h-80 rounded-full overflow-hidden glass glow-cyan hover:glow-purple transition-all duration-500 hover:scale-105 hover:rotate-3">
                 <img 
-                  src={profileImage}
-                  alt="Yash Kokate"
+                  src={aboutData.profileImage}
+                  alt="Profile"
                   className="w-full h-full object-cover"
                 />
               </div>

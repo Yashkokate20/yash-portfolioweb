@@ -2,68 +2,11 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from './ui/button';
-import { 
-  ArrowRight,
-  ChartLineUp,
-  Robot,
-  CurrencyCircleDollar,
-  TrendUp,
-  Shield,
-  Lightning
-} from 'phosphor-react';
+import { ArrowRight } from 'phosphor-react';
+import { projects, projectsConfig } from '../data';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  {
-    title: "AI Trading Algorithm",
-    description: "Machine learning-powered trading system with 87% accuracy rate and automated risk management.",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=250&fit=crop",
-    tech: ["Python", "TensorFlow", "API Integration"],
-    icon: Robot,
-    gradient: "from-neon-cyan to-neon-purple"
-  },
-  {
-    title: "Portfolio Analytics Dashboard",
-    description: "Real-time portfolio monitoring with advanced analytics and predictive modeling capabilities.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
-    tech: ["React", "D3.js", "WebSocket"],
-    icon: ChartLineUp,
-    gradient: "from-neon-purple to-neon-pink"
-  },
-  {
-    title: "Crypto Trading Bot",
-    description: "Automated cryptocurrency trading with dynamic strategy adjustment and multi-exchange support.",
-    image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=250&fit=crop",
-    tech: ["Node.js", "WebSocket", "APIs"],
-    icon: CurrencyCircleDollar,
-    gradient: "from-neon-orange to-neon-cyan"
-  },
-  {
-    title: "Risk Assessment Model",
-    description: "Quantitative risk modeling system for portfolio optimization and stress testing.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-    tech: ["Python", "NumPy", "Pandas"],
-    icon: Shield,
-    gradient: "from-neon-green to-neon-purple"
-  },
-  {
-    title: "Market Sentiment Analyzer",
-    description: "NLP-powered sentiment analysis for market prediction using social media and news data.",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop",
-    tech: ["Python", "NLP", "API"],
-    icon: TrendUp,
-    gradient: "from-neon-pink to-neon-cyan"
-  },
-  {
-    title: "High-Frequency Trading System",
-    description: "Low-latency trading infrastructure with microsecond execution and advanced order management.",
-    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=400&h=250&fit=crop",
-    tech: ["C++", "FIX Protocol", "FPGA"],
-    icon: Lightning,
-    gradient: "from-neon-cyan to-neon-orange"
-  }
-];
 
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -143,7 +86,7 @@ const ProjectsSection = () => {
           ref={titleRef}
           className="text-5xl md:text-6xl font-light text-center mb-16 gradient-text"
         >
-          Featured Projects
+          {projectsConfig.title}
         </h2>
         
         {/* Horizontal Scroll Container */}
@@ -155,9 +98,9 @@ const ProjectsSection = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="project-card w-80 flex-shrink-0 group cursor-pointer"
+                className="project-card w-80 h-[480px] flex-shrink-0 group cursor-pointer"
               >
-                <div className="glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan">
+                <div className="glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan h-full flex flex-col">
                   {/* Project Image */}
                   <div className="relative h-48 overflow-hidden">
                     <img 
@@ -174,18 +117,18 @@ const ProjectsSection = () => {
                   </div>
                   
                   {/* Project Content */}
-                  <div className="p-6">
+                  <div className="p-6 flex-1 flex flex-col">
                     <h3 className="text-xl font-medium text-primary mb-3 group-hover:text-neon-cyan transition-colors duration-300">
                       {project.title}
                     </h3>
                     
-                    <p className="text-foreground/80 mb-4 leading-relaxed">
-                      {project.description}
+                    <p className="text-foreground/80 mb-4 leading-relaxed text-sm line-clamp-3 flex-1">
+                      {project.description.length > 120 ? `${project.description.substring(0, 120)}...` : project.description}
                     </p>
                     
                     {/* Tech Stack */}
                     <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech, techIndex) => (
+                      {project.tech.slice(0, 3).map((tech, techIndex) => (
                         <span
                           key={techIndex}
                           className="px-3 py-1 text-xs bg-primary/20 text-primary rounded-full border border-primary/30"
@@ -193,6 +136,11 @@ const ProjectsSection = () => {
                           {tech}
                         </span>
                       ))}
+                      {project.tech.length > 3 && (
+                        <span className="px-3 py-1 text-xs bg-primary/10 text-primary/60 rounded-full border border-primary/20">
+                          +{project.tech.length - 3}
+                        </span>
+                      )}
                     </div>
                     
                     {/* CTA Button */}
