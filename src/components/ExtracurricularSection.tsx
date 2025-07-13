@@ -33,13 +33,13 @@ const ExtracurricularSection = () => {
   const getSizeClasses = (size: string) => {
     switch (size) {
       case 'small': 
-        return 'col-span-1 row-span-1 h-56 md:h-48';
+        return 'col-span-1 h-64';
       case 'medium': 
-        return 'col-span-1 md:col-span-2 row-span-1 h-56 md:h-52';
+        return 'col-span-1 h-64';
       case 'large': 
-        return 'col-span-1 md:col-span-2 lg:col-span-3 row-span-1 md:row-span-2 h-56 md:h-96';
+        return 'col-span-1 md:col-span-2 h-64';
       default: 
-        return 'col-span-1 row-span-1 h-56 md:h-48';
+        return 'col-span-1 h-64';
     }
   };
 
@@ -63,7 +63,7 @@ const ExtracurricularSection = () => {
         {/* Responsive Grid Layout */}
         <div 
           ref={gridRef}
-          className={`grid ${extracurricularConfig.gridConfig.desktop} ${extracurricularConfig.gridConfig.gap} ${extracurricularConfig.gridConfig.autoRows}`}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {extracurricularActivities.map((activity, index) => (
             <div

@@ -121,11 +121,6 @@ export const extracurricularConfig = {
   title: "Beyond the Charts",
   subtitle: "Community involvement and professional contributions",
   backgroundEffects: true,
-  gridConfig: {
-    desktop: "grid-cols-1 md:grid-cols-4 lg:grid-cols-6",
-    gap: "gap-6",
-    autoRows: "auto-rows-max"
-  },
   animationConfig: {
     stagger: {
       amount: 1.2,
