@@ -161,13 +161,6 @@ const AwardsSection = () => {
                   </p>
                 </div>
                 
-                {/* Decorative border glow effect */}
-                <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className={`absolute inset-0 rounded-lg border-2 border-transparent bg-gradient-to-r from-primary via-accent to-primary bg-clip-border`} 
-                       style={{ background: 'linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)))', padding: '2px' }}>
-                    <div className="bg-background rounded-lg h-full w-full" />
-                  </div>
-                </div>
               </div>
             </div>
           ))}
