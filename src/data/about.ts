@@ -3,7 +3,7 @@
 export const aboutData = {
   title: "About Me",
   bio: "I'm a passionate trader and value investor with expertise in quantitative analysis and FinTech innovation. My approach combines traditional investment principles with cutting-edge technology to identify and capitalize on market opportunities.",
-  profileImage: "https://github.com/Yashkokate20/yash-portfolioweb/blob/main/src/yash-profile.png?raw=true",
+  profileImage: "file:///C:/Users/Lenovo/Downloads/new%20pic%20upscale/professional.png",
   skills: [
     "Trading",
     "Analytics", 
