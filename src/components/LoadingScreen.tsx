@@ -52,7 +52,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           Yash Kokate
         </div>
         
-        <div className="w-80 h-1 bg-muted rounded-full overflow-hidden">
+        <div className="w-full max-w-md mx-auto h-1 bg-muted rounded-full overflow-hidden">
           <div
             ref={progressRef}
             className="h-full bg-gradient-to-r from-primary to-accent rounded-full w-0 glow-cyan"

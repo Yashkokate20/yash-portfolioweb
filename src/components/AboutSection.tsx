@@ -52,8 +52,12 @@ const AboutSection = () => {
               <div className="w-80 h-80 rounded-full overflow-hidden glass glow-cyan hover:glow-purple transition-all duration-500 hover:scale-105 hover:rotate-3">
                 <img 
                   src={aboutData.profileImage}
-                  alt="Profile"
+                  alt="Yash Kokate Profile"
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    console.log('Image failed to load:', aboutData.profileImage);
+                    e.currentTarget.src = '/src/assets/yash-profile.png';
+                  }}
                 />
               </div>
             </div>
