@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { aboutData, aboutConfig } from '../data';
-import OptimizedImage from './OptimizedImage';
+import ProfileImage from './ProfileImage';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +11,15 @@ const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  // Preload profile image for instant display
+  useEffect(() => {
+    const img = new Image();
+    img.src = aboutData.profileImage;
+    // Also preload fallback
+    const fallbackImg = new Image();
+    fallbackImg.src = aboutData.fallbackImage;
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -52,12 +61,10 @@ const AboutSection = () => {
           <div ref={imageRef} className="text-center">
             <div className="relative inline-block">
               <div className="w-80 h-80 rounded-full overflow-hidden glass glow-cyan hover:glow-purple transition-all duration-500 hover:scale-105 hover:rotate-3">
-                <OptimizedImage 
-                  src={aboutData.profileImage}
-                  alt="Yash Kokate Profile"
+                <ProfileImage 
                   className="w-full h-full object-cover"
-                  fallbackSrc="/placeholder.svg"
-                  onError={() => console.log('Profile image failed to load')}
+                  onLoad={() => console.log('Profile image loaded successfully')}
+                  onError={() => console.log('Profile image failed to load completely')}
                 />
               </div>
             </div>

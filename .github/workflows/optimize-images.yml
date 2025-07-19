@@ -1,0 +1,65 @@
+
+name: Optimize Profile Images
+
+on:
+  push:
+    paths:
+      - 'public/yash-profile.png'
+      - 'public/yash-profile.jpg' 
+      - 'public/yash-profile.jpeg'
+      - 'public/yash-profile.webp'
+  workflow_dispatch:
+
+jobs:
+  optimize-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install image optimization tools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y imagemagick webp
+        
+    - name: Optimize profile image
+      run: |
+        # Check if profile image exists and optimize it
+        if [ -f "public/yash-profile.png" ]; then
+          # Optimize PNG
+          convert public/yash-profile.png -resize 512x512^ -gravity center -extent 512x512 -quality 90 public/yash-profile-optimized.png
+          mv public/yash-profile-optimized.png public/yash-profile.png
+          
+          # Create WebP version for modern browsers
+          cwebp -q 85 public/yash-profile.png -o public/yash-profile.webp
+          
+          echo "✅ Profile image optimized successfully"
+        else
+          echo "❌ No profile image found to optimize"
+        fi
+        
+    - name: Update cache timestamp
+      run: |
+        # Update the cache timestamp in about.ts to force browser refresh
+        TIMESTAMP=$(date +%s)
+        sed -i "s/const cacheTimestamp = [0-9]*/const cacheTimestamp = $TIMESTAMP/" src/data/about.ts
+        echo "✅ Cache timestamp updated to: $TIMESTAMP"
+        
+    - name: Commit optimized images
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add public/yash-profile.* src/data/about.ts
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "🖼️ Auto-optimize profile images and update cache"
+          git push
+          echo "✅ Changes committed and pushed"
+        fi

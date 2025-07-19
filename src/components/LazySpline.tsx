@@ -1,10 +1,18 @@
-
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 interface LazySplineProps {
   url: string;
   className?: string;
   priority?: 'low' | 'high';
+}
+
+// Type declaration for Network Information API
+interface NavigatorConnection {
+  effectiveType?: string;
+}
+
+interface NavigatorWithConnection extends Navigator {
+  connection?: NavigatorConnection;
 }
 
 const LazySpline = ({ url, className = "", priority = 'low' }: LazySplineProps) => {
@@ -17,8 +25,9 @@ const LazySpline = ({ url, className = "", priority = 'low' }: LazySplineProps) 
 
   // Check if user prefers reduced motion or has slow connection
   const preferReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isSlowConnection = navigator.connection && navigator.connection.effectiveType && 
-    ['slow-2g', '2g'].includes(navigator.connection.effectiveType);
+  const navigatorWithConnection = navigator as NavigatorWithConnection;
+  const isSlowConnection = navigatorWithConnection.connection && navigatorWithConnection.connection.effectiveType && 
+    ['slow-2g', '2g'].includes(navigatorWithConnection.connection.effectiveType);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
