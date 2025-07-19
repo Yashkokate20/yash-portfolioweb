@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { aboutData } from '../data';
+import { addCacheBuster } from '../utils/cache';
 
 interface ProfileImageProps {
   className?: string;
@@ -11,7 +12,7 @@ interface ProfileImageProps {
 const ProfileImage = ({ className = "", onLoad, onError }: ProfileImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [currentSrc, setCurrentSrc] = useState(aboutData.profileImage);
+  const [currentSrc, setCurrentSrc] = useState(() => addCacheBuster(aboutData.profileImage));
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -20,8 +21,8 @@ const ProfileImage = ({ className = "", onLoad, onError }: ProfileImageProps) =>
 
   const handleError = () => {
     console.log('GitHub image failed, trying fallback:', aboutData.fallbackImage);
-    if (currentSrc !== aboutData.fallbackImage) {
-      setCurrentSrc(aboutData.fallbackImage);
+    if (currentSrc !== addCacheBuster(aboutData.fallbackImage)) {
+      setCurrentSrc(addCacheBuster(aboutData.fallbackImage));
     } else {
       setHasError(true);
       onError?.();
@@ -35,7 +36,7 @@ const ProfileImage = ({ className = "", onLoad, onError }: ProfileImageProps) =>
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full animate-pulse" />
       )}
       
-      {/* Main profile image */}
+      {/* Main profile image with dynamic cache busting */}
       <img
         src={currentSrc}
         alt="Yash Kokate Profile"
@@ -44,10 +45,10 @@ const ProfileImage = ({ className = "", onLoad, onError }: ProfileImageProps) =>
         }`}
         onLoad={handleLoad}
         onError={handleError}
-        // Preload for immediate display
+        // Force cache bypass for immediate updates
         loading="eager"
         decoding="async"
-        // Optimize for profile photos
+        key={currentSrc} // Force re-render when src changes
         style={{
           imageRendering: 'auto',
           imageOrientation: 'from-image'

@@ -11,6 +11,12 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  define: {
+    // Make build-time variables available to the app
+    __BUILD_TIME__: JSON.stringify(process.env.VITE_BUILD_TIME || Date.now()),
+    __COMMIT_HASH__: JSON.stringify(process.env.VITE_COMMIT_HASH || 'dev'),
+    __BUILD_ID__: JSON.stringify(process.env.VITE_BUILD_ID || '0'),
+  },
   plugins: [
     react(),
     mode === 'development' &&
@@ -24,6 +30,19 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
+        // Add cache busting to chunk names
+        chunkFileNames: (chunkInfo) => {
+          const buildTime = process.env.VITE_BUILD_TIME || Date.now();
+          return `assets/[name]-[hash]-${buildTime}.js`;
+        },
+        entryFileNames: (chunkInfo) => {
+          const buildTime = process.env.VITE_BUILD_TIME || Date.now();
+          return `assets/[name]-[hash]-${buildTime}.js`;
+        },
+        assetFileNames: (assetInfo) => {
+          const buildTime = process.env.VITE_BUILD_TIME || Date.now();
+          return `assets/[name]-[hash]-${buildTime}.[ext]`;
+        },
         manualChunks: {
           vendor: ['react', 'react-dom'],
           animations: ['gsap'],
