@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           animations: ['gsap'],
-          ui: ['@radix-ui/react-avatar', '@radix-ui/react-button']
+          ui: ['@radix-ui/react-avatar', '@radix-ui/react-slot']
         }
       }
     },
