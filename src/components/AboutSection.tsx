@@ -1,7 +1,9 @@
+
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { aboutData, aboutConfig } from '../data';
+import OptimizedImage from './OptimizedImage';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,14 +52,12 @@ const AboutSection = () => {
           <div ref={imageRef} className="text-center">
             <div className="relative inline-block">
               <div className="w-80 h-80 rounded-full overflow-hidden glass glow-cyan hover:glow-purple transition-all duration-500 hover:scale-105 hover:rotate-3">
-                <img 
+                <OptimizedImage 
                   src={aboutData.profileImage}
                   alt="Yash Kokate Profile"
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    console.log('Image failed to load:', aboutData.profileImage);
-                    e.currentTarget.src = '/placeholder.svg';
-                  }}
+                  fallbackSrc="/placeholder.svg"
+                  onError={() => console.log('Profile image failed to load')}
                 />
               </div>
             </div>

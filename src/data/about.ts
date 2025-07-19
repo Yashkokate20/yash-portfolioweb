@@ -1,9 +1,11 @@
+
 // About section data configuration
 
 export const aboutData = {
   title: "About Me",
   bio: "I'm a passionate trader and value investor with expertise in quantitative analysis and FinTech innovation. My approach combines traditional investment principles with cutting-edge technology to identify and capitalize on market opportunities.",
-  profileImage: "/yash-profile.png",
+  // Using GitHub raw URL for easy updates - just upload new image to your repo
+  profileImage: "https://raw.githubusercontent.com/YOUR_USERNAME/yash-portfolio/main/public/yash-profile.png",
   skills: [
     "Trading",
     "Analytics", 

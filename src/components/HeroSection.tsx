@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Button } from './ui/button';
@@ -98,6 +99,7 @@ const HeroSection = () => {
         <LazySpline 
           url={heroData.splineUrl}
           className="w-full h-full"
+          priority="high"
         />
       </div>
 

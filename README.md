@@ -1,10 +1,23 @@
+
 # Yash Kokate - Professional Portfolio
 
 A modern, responsive portfolio website for a trader and value investor built with React, TypeScript, and GSAP animations.
 
+## 🚀 Quick Deploy to GitHub Pages
+
+1. **Enable GitHub Pages:**
+   - Go to your repository Settings → Pages
+   - Source: "GitHub Actions"
+   - The workflow will automatically deploy on every push to main
+
+2. **Update Your Profile Image:**
+   - Simply upload a new `yash-profile.png` to the `public/` folder
+   - Commit and push - your live site updates automatically!
+   - Supported formats: PNG, JPG, WebP (recommended: 512x512px)
+
 ## 🎯 Content Management
 
-This portfolio is designed for easy content editing. All content is centralized in data files located in `src/data/`:
+All content is centralized in data files located in `src/data/`:
 
 ### 📁 Data Structure
 
@@ -79,59 +92,63 @@ To receive contact form submissions via email, you need to connect to Supabase:
 2. Create or connect to a Supabase project
 3. The email functionality will be automatically configured
 
-## Project info
+## 🖼️ Easy Profile Image Updates
 
-**URL**: https://lovable.dev/projects/3e80917a-205f-4fa0-823e-b4fe37b10bed
+### Method 1: Direct GitHub Upload (Recommended)
+1. Go to your GitHub repository
+2. Navigate to `public/` folder
+3. Upload your new `yash-profile.png` (drag & drop works!)
+4. Commit changes - your live site updates automatically!
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/3e80917a-205f-4fa0-823e-b4fe37b10bed) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+### Method 2: Local Development
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Replace the image in public/ folder
+cp your-new-image.png public/yash-profile.png
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Commit and push
+git add public/yash-profile.png
+git commit -m "Update profile image"
+git push
 ```
 
-**Edit a file directly in GitHub**
+### Image Requirements
+- **Format:** PNG, JPG, or WebP
+- **Size:** 512x512px recommended (will be auto-optimized)
+- **File size:** Under 1MB for best performance
+- **Name:** Must be `yash-profile.png` in the `public/` folder
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🚀 Alternative Deployment Options
 
-**Use GitHub Codespaces**
+### Deploy to Vercel
+1. Connect your GitHub repo to Vercel
+2. Vercel will auto-deploy on every push
+3. Custom domain supported
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Local Development
+```sh
+# Install dependencies
+npm install
 
-## What technologies are used for this project?
+# Start development server
+npm run dev
 
-This project is built with:
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📱 Performance Features
+
+- **🚀 Lazy Loading:** 3D models and images load only when needed
+- **⚡ Code Splitting:** Faster initial load with chunked bundles
+- **🖼️ Image Optimization:** Automatic compression and format conversion
+- **📱 Responsive Design:** Perfect on all device sizes
+- **🎨 Smooth Animations:** GSAP-powered transitions
+- **♿ Accessibility:** Reduced motion support and screen reader friendly
+
+## 🛠️ Technologies Used
 
 - **React 18** - UI framework
 - **TypeScript** - Type safety
@@ -139,38 +156,29 @@ This project is built with:
 - **GSAP** - Animations
 - **Vite** - Build tool
 - **Shadcn/ui** - UI components
-- **Phosphor Icons** - Icon library
+- **GitHub Actions** - CI/CD
 
-## 🚀 Features
+## 🔧 Troubleshooting
 
-- **Responsive Design** - Works on all devices
-- **Smooth Animations** - GSAP-powered animations and transitions
-- **Modern UI** - Glass morphism effects and neon accents
-- **Type Safety** - Full TypeScript support
-- **Easy Content Management** - Centralized data configuration
-- **Contact Form** - Email integration ready
-- **SEO Optimized** - Meta tags and structured data
+### GitHub Pages Not Updating?
+1. Check Actions tab for deployment status
+2. Ensure GitHub Pages source is set to "GitHub Actions"
+3. Verify repository name matches Vite config base path
 
-## 📱 Portfolio Sections
+### 3D Model Loading Slowly?
+- The model lazy loads automatically
+- Users with slow connections see optimized loading
+- Reduced motion users see a static alternative
 
-1. **Hero** - Introduction with 3D background
-2. **About** - Personal bio and key skills
-3. **Skills** - Technical skills and tools
-4. **Experience** - Professional timeline
-5. **Projects** - Portfolio showcase
-6. **Awards** - Recognition and achievements
-7. **Certifications** - Professional certifications
-8. **Extracurricular** - Activities and interests
-9. **Contact** - Contact form and social links
+### Image Not Showing?
+1. Verify image is in `public/` folder
+2. Check file name is exactly `yash-profile.png`
+3. Ensure image file size is under 5MB
 
-## How can I deploy this project?
+## 📞 Support
 
-Simply open [Lovable](https://lovable.dev/projects/3e80917a-205f-4fa0-823e-b4fe37b10bed) and click on Share -> Publish.
+For technical issues or questions, please open an issue in this repository.
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+**Built with ❤️ using [Lovable](https://lovable.dev)**
