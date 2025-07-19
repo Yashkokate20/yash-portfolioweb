@@ -17,9 +17,8 @@ const LazySpline = ({ url, className = "", priority = 'low' }: LazySplineProps) 
 
   // Check if user prefers reduced motion or has slow connection
   const preferReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const connection = (navigator as any).connection;
-  const isSlowConnection = connection && connection.effectiveType && 
-    ['slow-2g', '2g'].includes(connection.effectiveType);
+  const isSlowConnection = navigator.connection && navigator.connection.effectiveType && 
+    ['slow-2g', '2g'].includes(navigator.connection.effectiveType);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
