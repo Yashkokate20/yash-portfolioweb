@@ -49,7 +49,7 @@ const ProfileImage = ({ className = "", onLoad, onError }: ProfileImageProps) =>
         decoding="async"
         // Optimize for profile photos
         style={{
-          imageRendering: 'high-quality',
+          imageRendering: 'auto',
           imageOrientation: 'from-image'
         }}
       />
