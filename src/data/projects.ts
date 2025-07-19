@@ -12,7 +12,7 @@ import { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    title: "AI Trading Algorithm",
+    title: "Stock Analyst AI Agent",
     description: "Machine learning-powered trading system with 87% accuracy rate and automated risk management. Features real-time market analysis and adaptive strategy optimization.",
     image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=250&fit=crop",
     tech: ["Python", "TensorFlow", "API Integration", "Docker"],
