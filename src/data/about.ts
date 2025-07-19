@@ -14,16 +14,18 @@ const getCommitHash = () => {
 
 export const aboutData = {
   title: "About Me",
-  bio: "I'm a passionate trader and value investor with expertise in quantitative analysis and FinTech innovation. My approach combines traditional investment principles with cutting-edge technology to identify and capitalize on market opportunities.",
+  bio: "I'm a Financial Technology & Analytics graduate student at Stevens Institute with practical experience as a Derivatives & Equity Trader. I combine academic knowledge with real-world trading experience to develop innovative financial solutions and AI-powered market analysis tools.",
   // Dynamic cache busting with build time and commit hash
   profileImage: `https://raw.githubusercontent.com/yash-kokate/yash-portfolio/main/public/yash-profile.png?v=${getBuildTime()}&h=${getCommitHash()}`,
   // Fallback to local image with cache busting
   fallbackImage: `/yash-profile.png?v=${getBuildTime()}`,
   skills: [
-    "Trading",
-    "Analytics", 
-    "FinTech",
-    "Investment"
+    "Derivatives Trading",
+    "Quantitative Analysis", 
+    "Financial Technology",
+    "Risk Management",
+    "Python Programming",
+    "AI/ML in Finance"
   ]
 };
 

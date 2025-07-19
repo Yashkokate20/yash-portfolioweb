@@ -6,6 +6,7 @@ export { experiences, experienceConfig } from './experience';
 export { projects, projectsConfig } from './projects';
 export { awards, awardsConfig } from './awards';
 export { extracurricularActivities, extracurricularConfig } from './extracurricular';
+export { educationData, educationConfig } from './education';
 
 // Export new centralized data
 export { heroData, heroConfig } from './hero';
@@ -17,23 +18,20 @@ export { siteConfig } from './site-config';
 
 // Certifications data (easily editable)
 export const certifications = [
-  "CFA Institute - Chartered Financial Analyst",
-  "FRM Institute - Financial Risk Manager", 
-  "CAIA Association - Chartered Alternative Investment Analyst",
-  "CQF Institute - Certificate in Quantitative Finance",
-  "PMI - Project Management Professional",
-  "Google Cloud - Professional Data Engineer",
-  "AWS - Solutions Architect",
-  "Microsoft - Azure AI Engineer",
-  "Coursera - Machine Learning Specialization",
-  "edX - MITx Introduction to Computational Thinking"
+  "Bloomberg Market Concepts (BMC)",
+  "Bloomberg Spreadsheet Analysis",
+  "NISM-SEBI Investor",
+  "PGIM Fixed Income Job Simulation",
+  "Bank of America Investment Banking Simulation",
+  "Goldman Sachs Excel for Business",
+  "Financial Analyst of the New York Jobs CEO Council"
 ];
 
 // Legacy contact info - use siteConfig.contact instead
 export const contactInfo = {
-  email: "hello@yashkokate.com",
-  phone: "+1 (555) 123-4567",
-  location: "New York, NY",
+  email: "ykokate@stevens.edu",
+  phone: "+91 8928719893",
+  location: "Hoboken, NJ",
   social: {
     linkedin: "https://linkedin.com/in/yashkokate",
     github: "https://github.com/yashkokate",

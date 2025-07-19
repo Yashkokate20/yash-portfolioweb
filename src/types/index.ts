@@ -52,6 +52,18 @@ export interface Award {
   color: string;
 }
 
+// Education Section
+export interface Education {
+  institution: string;
+  degree: string;
+  field?: string;
+  location: string;
+  period: string;
+  status?: string;
+  gpa?: string;
+  honors?: string;
+}
+
 // Extracurricular Section
 export interface ExtracurricularActivity {
   title: string;

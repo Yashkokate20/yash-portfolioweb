@@ -21,36 +21,38 @@ import { SkillCategory } from '@/types';
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Financial & Quantitative Analysis",
-    skills: [
-      { name: "Technical Analysis", icon: ChartLineUp },
-      { name: "Risk Management", icon: ShieldCheck },
-      { name: "Portfolio Optimization", icon: TrendUp },
-      { name: "Quantitative Modeling", icon: Calculator },
-      { name: "Derivatives Trading", icon: CurrencyCircleDollar },
-      { name: "Financial Modeling", icon: FileSpreadsheet }
-    ]
-  },
-  {
-    title: "Technologies & Platforms",
-    skills: [
-      { name: "Trading Platforms", icon: Lightning },
-      { name: "Market Data APIs", icon: Database },
-      { name: "Financial Databases", icon: Globe },
-      { name: "AI/ML Tools", icon: Brain },
-      { name: "Cloud Computing", icon: CloudArrowUp },
-      { name: "Algorithmic Trading", icon: Robot }
-    ]
-  },
-  {
-    title: "Programming & Development",
+    title: "Programming & Data Analysis",
     skills: [
       { name: "Python", icon: Code },
-      { name: "JavaScript", icon: Code },
-      { name: "React", icon: Code },
-      { name: "Data Science", icon: Calculator },
-      { name: "Git/Version Control", icon: GitBranch },
-      { name: "Command Line", icon: Terminal }
+      { name: "Pandas", icon: Database },
+      { name: "NumPy", icon: Calculator },
+      { name: "Matplotlib", icon: ChartLineUp },
+      { name: "Data Visualization", icon: TrendUp },
+      { name: "Quantitative Analysis", icon: Calculator }
+    ]
+  },
+  {
+    title: "Financial Tools & Platforms",
+    skills: [
+      { name: "Bloomberg Terminal", icon: Lightning },
+      { name: "Microsoft Excel-AI", icon: FileSpreadsheet },
+      { name: "PowerPoint", icon: Globe },
+      { name: "Trading Platforms", icon: CurrencyCircleDollar },
+      { name: "Financial Databases", icon: Database },
+      { name: "Risk Management Tools", icon: ShieldCheck }
+    ]
+  },
+  {
+    title: "Financial Expertise",
+    skills: [
+      { name: "Financial Modeling", icon: Calculator },
+      { name: "Technical Analysis", icon: ChartLineUp },
+      { name: "Fundamental Analysis", icon: TrendUp },
+      { name: "Risk Management", icon: ShieldCheck },
+      { name: "Trading Strategies", icon: Lightning },
+      { name: "Portfolio Optimization", icon: Robot },
+      { name: "Market Research", icon: Brain },
+      { name: "Investment Strategies", icon: CurrencyCircleDollar }
     ]
   }
 ];

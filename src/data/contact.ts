@@ -9,9 +9,9 @@ import {
 
 export const contactData = {
   title: "Get In Touch",
-  subtitle: "Ready to discuss opportunities in trading, investment, or FinTech development",
-  email: "yash.kokate@example.com",
-  connectMessage: "I'm always interested in discussing new opportunities, sharing insights about financial markets, or collaborating on innovative FinTech projects.",
+  subtitle: "Ready to discuss opportunities in FinTech, trading, or graduate studies",
+  email: "ykokate@stevens.edu",
+  connectMessage: "I'm always interested in discussing new opportunities, sharing insights about financial markets, or collaborating on innovative FinTech projects and research.",
   form: {
     fields: [
       {
@@ -40,7 +40,7 @@ export const contactData = {
   socialLinks: [
     { 
       icon: LinkedinLogo, 
-      url: 'https://linkedin.com/in/yashkokate', 
+      url: 'https://www.linkedin.com/in/yashkokate/', 
       label: 'LinkedIn', 
       color: 'hover:text-neon-cyan' 
     },
@@ -51,14 +51,8 @@ export const contactData = {
       color: 'hover:text-neon-purple' 
     },
     { 
-      icon: TwitterLogo, 
-      url: 'https://twitter.com/yashkokate', 
-      label: 'Twitter', 
-      color: 'hover:text-neon-pink' 
-    },
-    { 
       icon: EnvelopeSimple, 
-      url: 'mailto:yash.kokate@example.com', 
+      url: 'mailto:ykokate@stevens.edu', 
       label: 'Email', 
       color: 'hover:text-neon-orange' 
     }

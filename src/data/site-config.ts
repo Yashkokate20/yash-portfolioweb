@@ -4,39 +4,40 @@ export const siteConfig = {
   // Basic site information
   site: {
     name: "Yash Kokate",
-    title: "Trader & Value Investor",
-    description: "Professional portfolio showcasing expertise in trading, quantitative analysis, and FinTech innovation",
+    title: "Financial Technology & Analytics Graduate Student",
+    description: "MS FinTech student at Stevens Institute with hands-on experience in derivatives trading, quantitative analysis, and AI-powered financial solutions",
     url: "https://yashkokate.com",
     author: "Yash Kokate"
   },
 
   // Contact information (used across multiple components)
   contact: {
-    email: "yashkokate0801@gmail.com",
+    email: "ykokate@stevens.edu",
     phone: "+91 8928719893",
-    location: "New York, NY",
+    location: "Hoboken, NJ",
     timezone: "EST",
     availability: "Open to opportunities"
   },
 
   // Social media profiles (consistent URLs across site)
   social: {
-    linkedin: "https://linkedin.com/in/yashkokate",
+    linkedin: "https://www.linkedin.com/in/yashkokate/",
     github: "https://github.com/yashkokate",
-    twitter: "https://twitter.com/yashkokate",
-    email: "yashkokate0801@gmail.com"
+    email: "ykokate@stevens.edu"
   },
 
   // SEO and meta information
   meta: {
     keywords: [
-      "trader",
-      "value investor", 
+      "financial technology",
+      "fintech graduate student", 
+      "derivatives trading",
       "quantitative analysis",
-      "fintech",
-      "algorithmic trading",
+      "stevens institute",
       "financial markets",
-      "portfolio management"
+      "portfolio management",
+      "ai in finance",
+      "python programming"
     ],
     ogImage: "/og-image.png",
     favicon: "/favicon.ico"

@@ -4,31 +4,17 @@ import { Experience } from '@/types';
 
 export const experiences: Experience[] = [
   {
-    title: "Senior Financial Analyst",
-    company: "FinTech Solutions Inc.",
-    period: "2023 - Present",
-    description: "Leading quantitative analysis and risk assessment for high-frequency trading algorithms. Developed proprietary models that improved portfolio performance by 23%. Managing a team of 5 analysts and overseeing $100M+ in assets.",
+    title: "Derivatives & Equity Trader Intern",
+    company: "JD-Investiing",
+    period: "Jan 2024 - Dec 2024",
+    description: "Accomplished comprehensive technical and fundamental market analysis, enabling profitable sector rotation and options strategies. Executed equity and derivatives trades, focusing on risk management during high volatility. Contributed to portfolio management with advanced risk management techniques; achieved a 22% annual return, surpassing benchmarks using sector rotation and covered calls. Collaborated with cross-functional teams to optimize portfolio performance, utilizing data-driven insights and quantitative analysis.",
     side: "left"
   },
   {
-    title: "Quantitative Trader",
-    company: "Alpha Capital Management",
-    period: "2021 - 2023",
-    description: "Managed a $50M portfolio with focus on algorithmic trading strategies. Implemented machine learning models for market prediction and risk management. Achieved consistent 15%+ annual returns with minimal drawdown.",
-    side: "right"
-  },
-  {
-    title: "Junior Analyst",
-    company: "Global Investment Bank",
-    period: "2020 - 2021",
-    description: "Analyzed market trends and developed trading strategies for institutional clients. Specialized in derivatives and fixed-income securities. Built automated reporting systems that improved efficiency by 40%.",
-    side: "left"
-  },
-  {
-    title: "Financial Research Intern",
-    company: "Investment Research Corp",
-    period: "2019 - 2020",
-    description: "Conducted fundamental analysis on emerging markets and created detailed investment reports for portfolio managers. Researched over 100 companies and contributed to investment decisions worth $25M+.",
+    title: "Analyst",
+    company: "Integreon",
+    period: "Aug 2023 - Dec 2023",
+    description: "Spearheaded secondary research and delivered accurate, high-quality reports within deadlines. Analyzed companies, markets, and sectors including healthcare, consumer goods, financial services, and fintech. Prepared detailed company profiles with financial analysis, data visualization using Python and Matplotlib, SWOT, and strategy evaluations. Utilized databases such as D&B and Lexis Nexis for qualitative and quantitative research. Gained experience in interpreting data and presenting insights tailored to client requirements.",
     side: "right"
   }
 ];
