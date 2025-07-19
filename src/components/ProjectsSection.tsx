@@ -1,12 +1,12 @@
+
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from './ui/button';
-import { ArrowRight } from 'phosphor-react';
+import { ArrowRight, Clock } from 'phosphor-react';
 import { projects, projectsConfig } from '../data';
 
 gsap.registerPlugin(ScrollTrigger);
-
 
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -100,7 +100,7 @@ const ProjectsSection = () => {
                 key={index}
                 className="project-card w-80 h-[480px] flex-shrink-0 group cursor-pointer"
               >
-                <div className="glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan h-full flex flex-col">
+                <div className={`glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan h-full flex flex-col ${project.isComingSoon ? 'border-2 border-dashed border-primary/30' : ''}`}>
                   {/* Project Image */}
                   <div className="relative h-48 overflow-hidden">
                     <img 
@@ -114,6 +114,14 @@ const ProjectsSection = () => {
                     <div className="absolute top-4 right-4 p-2 glass rounded-full">
                       <project.icon size={24} className="text-primary" weight="light" />
                     </div>
+
+                    {/* Coming Soon Badge */}
+                    {project.isComingSoon && (
+                      <div className="absolute top-4 left-4 px-3 py-1 bg-primary/90 text-primary-foreground rounded-full text-xs font-medium flex items-center gap-1">
+                        <Clock size={12} weight="light" />
+                        Coming Soon
+                      </div>
+                    )}
                   </div>
                   
                   {/* Project Content */}
@@ -146,9 +154,10 @@ const ProjectsSection = () => {
                     {/* CTA Button */}
                     <Button 
                       variant="outline" 
-                      className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                      className={`w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 ${project.isComingSoon ? 'opacity-60 cursor-not-allowed' : ''}`}
+                      disabled={project.isComingSoon}
                     >
-                      View Project
+                      {project.isComingSoon ? 'Stay Tuned' : 'View Project'}
                       <ArrowRight className="ml-2" size={16} weight="light" />
                     </Button>
                   </div>

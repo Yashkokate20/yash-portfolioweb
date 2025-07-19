@@ -1,3 +1,4 @@
+
 // TypeScript interfaces for portfolio data structures
 
 import { Icon } from 'phosphor-react';
@@ -40,6 +41,7 @@ export interface Project {
   gradient: string;
   demoUrl?: string;
   githubUrl?: string;
+  isComingSoon?: boolean; // Added for "Coming Soon" projects
 }
 
 // Awards Section

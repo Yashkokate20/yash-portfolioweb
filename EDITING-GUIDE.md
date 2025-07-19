@@ -1,168 +1,137 @@
 
-# 🚀 Portfolio Updated with Your Resume Data!
+# 🚀 Portfolio Updated with Enhanced Editing System!
 
-✅ **COMPLETED**: Portfolio now reflects your actual resume with real data  
-✅ **NEW**: Education section added before Experience  
-✅ **UPDATED**: All sections now match your background  
+✅ **COMPLETED**: All requested changes implemented  
+✅ **NEW**: Super easy editing system with templates  
+✅ **ENHANCED**: 5 total projects (3 real + 2 "Coming Soon")  
 
-Your website now updates **automatically within 2-3 minutes** when you edit data files on GitHub!
+Your website updates **automatically within 2-3 minutes** when you edit files on GitHub!
 
-## 📝 How to Edit Content
+## 📝 Quick Edit Sections
 
-### 1. **Hero Section** (`src/data/hero.ts`)
+### 🏠 **Hero Section** (`src/data/hero.ts`)
 ```typescript
 export const heroData = {
-  name: "Your Name",                    // ← Edit your name
-  title: "Your Title",                  // ← Edit your job title
-  subtitle: "Your description...",      // ← Edit your description
-  ctaText: "Hire Me",                  // ← Edit button text
+  name: "Yash Kokate",                  // ← Your name
+  title: "Your Professional Title",     // ← Your main title
+  subtitle: "",                         // ← Keep empty for clean look
+  ctaText: "Get in touch",             // ← Call-to-action button text
   // ... rest stays the same
 };
 ```
 
-### 2. **About Section** (`src/data/about.ts`)
+### 🚀 **Projects** (`src/data/projects.ts`) - **SUPER EASY TO EDIT!**
+
+**To add a new project, copy this template:**
 ```typescript
-export const aboutData = {
-  title: "About Me",                    // ← Section title
-  bio: "Your bio text here...",         // ← Edit your bio
-  skills: [                             // ← Add/remove skills
-    "Skill 1",
-    "Skill 2",
-    "New Skill"                         // ← Add new skills
-  ]
-};
+{
+  title: "Your Project Title",
+  description: "Detailed description...",
+  image: "https://images.unsplash.com/photo-XXXXXXXXX", // Find at unsplash.com
+  tech: ["Tech1", "Tech2", "Tech3"],
+  icon: Robot, // Choose: Robot, ChartLineUp, ShieldCheck, TrendUp, Lightning, Rocket, Brain
+  gradient: "from-neon-cyan to-neon-purple", // See available gradients in file
+  githubUrl: "https://github.com/you/repo", // Optional
+  demoUrl: "https://yourproject.com", // Optional
+  isComingSoon: false // Set to true for "Coming Soon" projects
+}
 ```
 
-### 3. **Experience** (`src/data/experience.ts`)
+**Available Project Gradients:**
+- `"from-neon-cyan to-neon-purple"`
+- `"from-neon-purple to-neon-pink"`
+- `"from-neon-pink to-neon-orange"`
+- `"from-neon-green to-neon-cyan"`
+- `"from-neon-orange to-neon-red"`
+
+**To change project images:**  
+1. Go to [Unsplash.com](https://unsplash.com)
+2. Search for your topic (e.g., "AI technology", "trading", "finance")  
+3. Copy the image URL (right-click → "Copy image address")
+4. Replace the `image:` field in your project
+
+### 🏆 **Trading Competitions** (`src/data/extracurricular.ts`)
+
+**Update your trading competition details:**
 ```typescript
-export const experiences: Experience[] = [
-  {
-    title: "Job Title",                 // ← Your job title
-    company: "Company Name",            // ← Company name
-    period: "2023 - Present",           // ← Work period
-    description: "What you did...",     // ← Job description
-    side: "left"                        // ← Keep as "left" or "right"
-  },
-  // Add more experiences here...
+{
+  title: "Your Competition Name",
+  description: "Details about what you won, when, against how many people...",
+  icon: Trophy, // or TrendUp for trading
+  size: "large",
+  color: "text-neon-cyan", // or "text-neon-purple"
+  category: "Competition"
+}
+```
+
+### 📜 **Certifications** (`src/data/index.ts`)
+```typescript
+export const certifications = [
+  "Bloomberg Market Concepts (BMC)",
+  "Bloomberg Spreadsheet Analysis", 
+  "NISM-SEBI Investor",
+  "PGIM Fixed Income Job Simulation", 
+  "Bank of America Investment Banking Simulation",
+  "Goldman Sachs Excel for Business", 
+  "Financial Analyst of the New York Jobs CEO Council"
+  // Add new ones here...
 ];
 ```
 
-### 4. **Projects** (`src/data/projects.ts`)
+### 📧 **Contact** (`src/data/contact.ts`)
 ```typescript
-export const projects: Project[] = [
-  {
-    title: "Project Name",              // ← Project title
-    description: "Project details...",  // ← What the project does
-    image: "https://image-url.com",     // ← Project image URL
-    tech: ["React", "Node.js"],         // ← Technologies used
-    demoUrl: "https://demo.com",        // ← Live demo link
-    githubUrl: "https://github.com/...",// ← GitHub repo link
-  },
-  // Add more projects here...
-];
-```
-
-### 5. **Contact Info** (`src/data/site-config.ts`)
-```typescript
-export const siteConfig = {
-  contact: {
-    email: "your@email.com",            // ← Your email
-    phone: "+1 234 567 8900",           // ← Your phone
-    location: "Your City, Country",     // ← Your location
-  },
-  social: {
-    linkedin: "https://linkedin.com/in/you", // ← Your LinkedIn
-    github: "https://github.com/you",        // ← Your GitHub
-    twitter: "https://twitter.com/you",      // ← Your Twitter
-  }
+export const contactData = {
+  title: "Get in touch",                // ← Section title
+  email: "ykokate@stevens.edu",        // ← Your email
+  connectMessage: "Your message...",    // ← What you want to say
+  // ... rest stays the same
 };
 ```
 
-## 🖼️ **Update Profile Image**
+## 🎨 **Image Resources**
 
-1. **Upload new image** to `public/` folder in GitHub
-2. **Name it exactly:** `yash-profile.png`
-3. **Commit changes** - image updates automatically!
+### **Project Images:**
+- **AI/Tech**: Search "artificial intelligence", "technology", "coding"
+- **Finance**: Search "trading", "finance", "stock market", "analytics"  
+- **Research**: Search "research", "analysis", "data visualization"
 
-**Supported formats:** PNG, JPG, WebP  
-**Recommended size:** 512x512px
-
-## ⚡ **Quick Edit Workflow**
-
-1. **Go to GitHub** → Your repository
-2. **Navigate to** `src/data/` folder
-3. **Click** the file you want to edit (e.g., `hero.ts`)
-4. **Click** the pencil icon (✏️) to edit
-5. **Make your changes**
-6. **Scroll down** and click "Commit changes"
-7. **Wait 2-3 minutes** - your live site updates automatically! 🎉
-
-## 🔄 **Auto-Deployment Status**
-
-Your site automatically rebuilds when you:
-- ✅ Edit any file in `src/data/`
-- ✅ Upload images to `public/`
-- ✅ Update any content files
-
-**No manual deployment needed!**
-
-## 📱 **Testing Updates**
-
-After editing:
-1. Wait 2-3 minutes for deployment
-2. Visit your live site
-3. Hard refresh (Ctrl+F5 / Cmd+Shift+R) if needed
-4. Changes should appear immediately!
-
-## 🆘 **Need Help?**
-
-If your changes don't appear:
-1. Check the "Actions" tab in GitHub for deployment status
-2. Ensure your edits don't have syntax errors
-3. Hard refresh your browser (Ctrl+F5)
-4. Wait up to 5 minutes for full propagation
-
-## 📋 **Adding New Content**
-
-### **New Experience Entry:**
-Copy an existing experience block and modify:
-```typescript
-{
-  title: "New Job Title",
-  company: "New Company",
-  period: "2024 - Present",
-  description: "New job description...",
-  side: "left" // Alternate "left" and "right"
-},
+### **Popular Image URLs** (ready to use):
+```
+Tech/AI: https://images.unsplash.com/photo-1677442136019-21780ecad995
+Finance: https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3
+Trading: https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f
+Innovation: https://images.unsplash.com/photo-1559526324-4b87b5e36e44
 ```
 
-### **New Project:**
-Copy an existing project block and modify:
-```typescript
-{
-  title: "New Project",
-  description: "Project description...",
-  image: "https://unsplash.com/photo-id",
-  tech: ["Technology1", "Technology2"],
-  icon: Robot, // Choose from available icons
-  gradient: "from-neon-cyan to-neon-purple",
-  demoUrl: "#",
-  githubUrl: "#"
-},
-```
+## ⚡ **Quick Changes Workflow**
 
-### **New Skill Category:**
-Add to `src/data/skills.ts`:
-```typescript
-{
-  title: "New Skill Category",
-  skills: [
-    { name: "Skill Name", icon: Code },
-    // Add more skills...
-  ]
-},
-```
+1. **Go to GitHub** → Your repository  
+2. **Navigate to** `src/data/` folder  
+3. **Click** the file you want to edit  
+4. **Click** the pencil icon (✏️)  
+5. **Make changes** using the templates above  
+6. **Commit** → Your site updates in 2-3 minutes! 🎉
+
+## 🎯 **What's New:**
+
+✅ **Hero**: Removed subtitle, changed CTA to "Get in touch"  
+✅ **Projects**: Now 5 total (3 real + 2 "Coming Soon" with special styling)  
+✅ **Certifications**: Updated with your actual 7 certifications  
+✅ **Competitions**: Added 2 trading competition placeholders  
+✅ **Contact**: Title changed to "Get in touch"  
+✅ **Super Easy Editing**: Templates and guides for everything  
+
+## 🔧 **Advanced Editing**
+
+### **Add More Projects:**
+Just copy the project template in `src/data/projects.ts` and add to the array!
+
+### **Change "Coming Soon" Projects:**
+Edit the last 2 projects in the array - change `isComingSoon: true` to `false` when ready!
+
+### **Update Trading Competitions:**
+Edit the 2 entries in `src/data/extracurricular.ts` with your actual competition details!
 
 ---
 
-**🎯 Your website now updates instantly with every GitHub edit!**
+**🎯 Everything is now super easy to edit and your changes appear live within minutes!**

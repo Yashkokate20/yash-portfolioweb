@@ -1,3 +1,4 @@
+
 // Projects data configuration
 
 import { 
@@ -6,9 +7,33 @@ import {
   CurrencyCircleDollar,
   ShieldCheck,
   TrendUp,
-  Lightning
+  Lightning,
+  Rocket,
+  Brain
 } from 'phosphor-react';
 import { Project } from '@/types';
+
+// EASY EDITING GUIDE:
+// To add a new project, copy this template and fill in your details:
+/*
+{
+  title: "Your Project Title",
+  description: "Detailed description of what your project does and accomplishes...",
+  image: "https://images.unsplash.com/photo-XXXXXXXXX", // Find images at unsplash.com
+  tech: ["Technology1", "Technology2", "Technology3"], // List all technologies used
+  icon: Robot, // Choose from: Robot, ChartLineUp, CurrencyCircleDollar, ShieldCheck, TrendUp, Lightning, Rocket, Brain
+  gradient: "from-neon-cyan to-neon-purple", // Choose from gradients below
+  githubUrl: "https://github.com/yourusername/repo", // Optional: GitHub link
+  demoUrl: "https://yourproject.com" // Optional: Live demo link
+}
+*/
+
+// Available gradients:
+// "from-neon-cyan to-neon-purple"
+// "from-neon-purple to-neon-pink" 
+// "from-neon-pink to-neon-orange"
+// "from-neon-green to-neon-cyan"
+// "from-neon-orange to-neon-red"
 
 export const projects: Project[] = [
   {
@@ -18,7 +43,7 @@ export const projects: Project[] = [
     tech: ["Google Gemini", "Node.js", "API Integration", "GitHub", "Telegram Bot", "TradingView Charts"],
     icon: Robot,
     gradient: "from-neon-cyan to-neon-purple",
-    githubUrl: "#"
+    githubUrl: "#" // TODO: Add your actual GitHub URL
   },
   {
     title: "Investment Risk Management",
@@ -27,7 +52,7 @@ export const projects: Project[] = [
     tech: ["Financial Metrics", "Beta Calculation", "VaR Analysis", "Treynor Ratio", "Risk Assessment", "Data Visualization"],
     icon: ShieldCheck,
     gradient: "from-neon-purple to-neon-pink",
-    demoUrl: "#"
+    demoUrl: "#" // TODO: Add demo link if available
   },
   {
     title: "A Study on Stock Market (Research Project)",
@@ -36,7 +61,28 @@ export const projects: Project[] = [
     tech: ["Market Research", "NSE & BSE Analysis", "Investment Principles", "Regulatory Frameworks", "Financial Analysis", "Research Methodology"],
     icon: ChartLineUp,
     gradient: "from-neon-pink to-neon-orange",
-    demoUrl: "#"
+    demoUrl: "#" // TODO: Add research document link
+  },
+  // NEW: Coming Soon Projects (easily editable)
+  {
+    title: "Coming Soon - FinTech Innovation Project",
+    description: "An exciting new project focusing on cutting-edge financial technology solutions. This project will demonstrate advanced analytical capabilities and innovative approaches to modern financial challenges. Stay tuned for updates!",
+    image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44", // Tech/Innovation themed
+    tech: ["FinTech", "Innovation", "Analytics", "Technology"],
+    icon: Rocket,
+    gradient: "from-neon-green to-neon-cyan",
+    githubUrl: "#", // Will be updated when project is ready
+    isComingSoon: true
+  },
+  {
+    title: "Coming Soon - AI-Driven Market Insights",
+    description: "Advanced artificial intelligence project for comprehensive market analysis and predictive insights. This project will showcase machine learning applications in financial markets and automated decision-making systems.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995", // AI/ML themed
+    tech: ["Artificial Intelligence", "Machine Learning", "Market Analysis", "Predictive Analytics"],
+    icon: Brain,
+    gradient: "from-neon-orange to-neon-red",
+    demoUrl: "#", // Will be updated when project is ready
+    isComingSoon: true
   }
 ];
 

@@ -8,7 +8,7 @@ import {
 } from 'phosphor-react';
 
 export const contactData = {
-  title: "Get In Touch",
+  title: "Get in touch",
   subtitle: "Ready to discuss opportunities in FinTech, trading, or graduate studies",
   email: "ykokate@stevens.edu",
   connectMessage: "I'm always interested in discussing new opportunities, sharing insights about financial markets, or collaborating on innovative FinTech projects and research.",

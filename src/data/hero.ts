@@ -3,8 +3,8 @@
 export const heroData = {
   name: "Yash Kokate",
   title: "Financial Technology & Analytics Graduate Student",
-  subtitle: "MS FinTech student at Stevens Institute with hands-on experience in derivatives trading, quantitative analysis, and AI-powered financial solutions.",
-  ctaText: "Connect with Me",
+  subtitle: "",
+  ctaText: "Get in touch",
   splineUrl: "https://my.spline.design/nexbotrobotcharacterconcept-3MUqioJ4y4CAJeGYk2GT1ob8/",
   floatingOrbs: [
     { position: "top-1/4 left-1/4", size: "w-2 h-2", color: "bg-neon-cyan", glow: "glow-cyan" },

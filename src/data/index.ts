@@ -1,3 +1,4 @@
+
 // Main data export file - centralized data management
 
 // Export all section data configurations
@@ -16,7 +17,7 @@ export { footerData, footerConfig } from './footer';
 export { contactData, contactConfig } from './contact';
 export { siteConfig } from './site-config';
 
-// Certifications data (easily editable)
+// Updated certifications with your actual ones
 export const certifications = [
   "Bloomberg Market Concepts (BMC)",
   "Bloomberg Spreadsheet Analysis",
