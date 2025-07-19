@@ -56,7 +56,7 @@ const AboutSection = () => {
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     console.log('Image failed to load:', aboutData.profileImage);
-                    e.currentTarget.src = '/src/assets/yash-profile.png';
+                    e.currentTarget.src = '/placeholder.svg';
                   }}
                 />
               </div>

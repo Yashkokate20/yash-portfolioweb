@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Button } from './ui/button';
 import { heroData, heroConfig } from '../data';
+import LazySpline from './LazySpline';
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -94,11 +95,8 @@ const HeroSection = () => {
     <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Spline 3D Model */}
       <div ref={splineRef} className="absolute inset-0 z-0">
-        <iframe 
-          src={heroData.splineUrl} 
-          frameBorder='0' 
-          width='100%' 
-          height='100%'
+        <LazySpline 
+          url={heroData.splineUrl}
           className="w-full h-full"
         />
       </div>
