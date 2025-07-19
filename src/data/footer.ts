@@ -1,3 +1,4 @@
+
 // Footer section data configuration
 
 import { 
@@ -13,7 +14,7 @@ export const footerData = {
     description: "Trader & Value Investor specializing in quantitative analysis, algorithmic trading, and financial technology innovation."
   },
   contact: {
-    email: "yash.kokate@example.com",
+    email: "yashkokate0801@gmail.com",
     location: "Mumbai, India",
     availability: "Open to opportunities"
   },
@@ -43,7 +44,7 @@ export const footerData = {
     },
     { 
       icon: EnvelopeSimple, 
-      url: 'mailto:yash.kokate@example.com', 
+      url: 'mailto:yashkokate0801@gmail.com', 
       label: 'Email' 
     }
   ],

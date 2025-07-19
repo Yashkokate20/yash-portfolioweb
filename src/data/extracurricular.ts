@@ -46,6 +46,38 @@ export const extracurricularActivities: ExtracurricularActivity[] = [
     size: "large", 
     color: "text-neon-purple",
     category: "Competition"
+  },
+  {
+    title: "400m Relay Race Champion",
+    description: "Won 400m relay race championship at St. Rock's High School, demonstrating speed, endurance, and excellent teamwork. Led the school athletics team to victory in the annual inter-school sports competition with outstanding performance and coordination.",
+    icon: Trophy,
+    size: "medium",
+    color: "text-neon-orange",
+    category: "Sports"
+  },
+  {
+    title: "Carrom Tournament Winner",
+    description: "Secured 1st place in the school carrom tournament at St. Rock's High School, showcasing strategic thinking, precision, and competitive excellence. Defeated multiple opponents through skillful gameplay and tactical decision-making.",
+    icon: Target,
+    size: "medium",
+    color: "text-neon-green",
+    category: "Sports"
+  },
+  {
+    title: "Inter-School Relay Racing",
+    description: "Participated and excelled in inter-school relay racing events, representing St. Rock's High School with distinction. Contributed to team victories through consistent performance, athletic dedication, and collaborative team spirit.",
+    icon: Users,
+    size: "medium",
+    color: "text-neon-purple",
+    category: "Sports"
+  },
+  {
+    title: "School Sports Excellence",
+    description: "Demonstrated exceptional athletic abilities across multiple sports disciplines at St. Rock's High School. Recognized for outstanding sportsmanship, leadership in athletic activities, and contribution to the school's sports culture and achievements.",
+    icon: Trophy,
+    size: "medium",
+    color: "text-neon-cyan",
+    category: "Sports"
   }
   // TODO: Add more activities as needed
   // You can easily add more entries here by copying the template above
