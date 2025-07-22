@@ -103,26 +103,22 @@ const ProjectsSection = () => {
           {projectsConfig.subtitle}
         </p>
         
-        {/* Responsive Grid Container */}
+        {/* Simplified Responsive Grid Container */}
         <div 
           ref={gridContainerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`project-card group cursor-pointer ${
-                projects.length === 5 && index >= 3 ? 'xl:col-span-1' : ''
-              } ${projects.length === 5 && index === 3 ? 'xl:col-start-1' : ''} ${
-                projects.length === 5 && index === 4 ? 'xl:col-start-2' : ''
-              }`}
+              className="project-card group cursor-pointer"
               onClick={() => handleProjectClick(project)}
             >
-              <div className={`glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan h-full flex flex-col ${
+              <div className={`glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan ${
                 project.isComingSoon ? 'border-2 border-dashed border-primary/30' : ''
               }`}>
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -131,42 +127,42 @@ const ProjectsSection = () => {
                   <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
                   
                   {/* Project Icon */}
-                  <div className="absolute top-4 right-4 p-2 glass rounded-full">
-                    <project.icon size={24} className="text-primary" weight="light" />
+                  <div className="absolute top-3 right-3 p-2 glass rounded-full">
+                    <project.icon size={20} className="text-primary" weight="light" />
                   </div>
 
                   {/* Coming Soon Badge */}
                   {project.isComingSoon && (
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-primary/90 text-primary-foreground rounded-full text-xs font-medium flex items-center gap-1">
-                      <Clock size={12} weight="light" />
+                    <div className="absolute top-3 left-3 px-2 py-1 bg-primary/90 text-primary-foreground rounded-full text-xs font-medium flex items-center gap-1">
+                      <Clock size={10} weight="light" />
                       Coming Soon
                     </div>
                   )}
                 </div>
                 
                 {/* Project Content */}
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-medium text-primary mb-3 group-hover:text-neon-cyan transition-colors duration-300">
+                <div className="p-5">
+                  <h3 className="text-lg font-medium text-primary mb-2 group-hover:text-neon-cyan transition-colors duration-300">
                     {project.title}
                   </h3>
                   
-                  <p className="text-foreground/80 mb-4 leading-relaxed text-sm flex-1">
+                  <p className="text-foreground/80 mb-4 leading-relaxed text-sm line-clamp-3">
                     {project.description}
                   </p>
                   
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.slice(0, 4).map((tech, techIndex) => (
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.tech.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 text-xs bg-primary/20 text-primary rounded-full border border-primary/30"
+                        className="px-2 py-1 text-xs bg-primary/20 text-primary rounded-full border border-primary/30"
                       >
                         {tech}
                       </span>
                     ))}
-                    {project.tech.length > 4 && (
-                      <span className="px-3 py-1 text-xs bg-primary/10 text-primary/60 rounded-full border border-primary/20">
-                        +{project.tech.length - 4}
+                    {project.tech.length > 3 && (
+                      <span className="px-2 py-1 text-xs bg-primary/10 text-primary/60 rounded-full border border-primary/20">
+                        +{project.tech.length - 3}
                       </span>
                     )}
                   </div>
@@ -178,36 +174,39 @@ const ProjectsSection = () => {
                         {project.demoUrl && project.demoUrl !== '#' && (
                           <Button 
                             variant="outline" 
+                            size="sm"
                             className="flex-1 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
                             onClick={(e) => {
                               e.stopPropagation();
                               window.open(project.demoUrl, '_blank');
                             }}
                           >
-                            <ArrowSquareOut className="mr-2" size={16} weight="light" />
+                            <ArrowSquareOut className="mr-1" size={14} weight="light" />
                             Demo
                           </Button>
                         )}
                         {project.githubUrl && project.githubUrl !== '#' && (
                           <Button 
                             variant="outline" 
+                            size="sm"
                             className="flex-1 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
                             onClick={(e) => {
                               e.stopPropagation();
                               window.open(project.githubUrl, '_blank');
                             }}
                           >
-                            <GithubLogo className="mr-2" size={16} weight="light" />
+                            <GithubLogo className="mr-1" size={14} weight="light" />
                             Code
                           </Button>
                         )}
                         {(!project.demoUrl || project.demoUrl === '#') && (!project.githubUrl || project.githubUrl === '#') && (
                           <Button 
                             variant="outline" 
+                            size="sm"
                             className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
                           >
                             View Project
-                            <ArrowRight className="ml-2" size={16} weight="light" />
+                            <ArrowRight className="ml-1" size={14} weight="light" />
                           </Button>
                         )}
                       </>
@@ -215,11 +214,12 @@ const ProjectsSection = () => {
                     {project.isComingSoon && (
                       <Button 
                         variant="outline" 
+                        size="sm"
                         className="w-full opacity-60 cursor-not-allowed"
                         disabled
                       >
                         Stay Tuned
-                        <Clock className="ml-2" size={16} weight="light" />
+                        <Clock className="ml-1" size={14} weight="light" />
                       </Button>
                     )}
                   </div>
