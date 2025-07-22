@@ -103,7 +103,7 @@ const ProjectsSection = () => {
           {projectsConfig.subtitle}
         </p>
         
-        {/* Simplified Responsive Grid Container */}
+        {/* Fixed Height Grid Container */}
         <div 
           ref={gridContainerRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -111,14 +111,14 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="project-card group cursor-pointer"
+              className="project-card group cursor-pointer h-[480px]"
               onClick={() => handleProjectClick(project)}
             >
-              <div className={`glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan ${
+              <div className={`glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan h-full flex flex-col ${
                 project.isComingSoon ? 'border-2 border-dashed border-primary/30' : ''
               }`}>
-                {/* Project Image */}
-                <div className="relative h-40 overflow-hidden">
+                {/* Project Image - Fixed Height */}
+                <div className="relative h-40 overflow-hidden flex-shrink-0">
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -140,42 +140,44 @@ const ProjectsSection = () => {
                   )}
                 </div>
                 
-                {/* Project Content */}
-                <div className="p-5">
-                  <h3 className="text-lg font-medium text-primary mb-2 group-hover:text-neon-cyan transition-colors duration-300">
+                {/* Project Content - Flexible Height */}
+                <div className="p-5 flex flex-col flex-grow">
+                  {/* Title - Fixed Height with Line Clamp */}
+                  <h3 className="text-lg font-medium text-primary mb-3 group-hover:text-neon-cyan transition-colors duration-300 line-clamp-2 h-14 flex items-start">
                     {project.title}
                   </h3>
                   
-                  <p className="text-foreground/80 mb-4 leading-relaxed text-sm line-clamp-3">
+                  {/* Description - Fixed Height with Line Clamp */}
+                  <p className="text-foreground/80 mb-4 leading-relaxed text-sm line-clamp-4 h-20 flex items-start">
                     {project.description}
                   </p>
                   
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
+                  {/* Tech Stack - Fixed Height */}
+                  <div className="flex flex-wrap gap-1.5 mb-4 h-16 content-start">
                     {project.tech.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 text-xs bg-primary/20 text-primary rounded-full border border-primary/30"
+                        className="px-2 py-1 text-xs bg-primary/20 text-primary rounded-full border border-primary/30 h-fit"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.tech.length > 3 && (
-                      <span className="px-2 py-1 text-xs bg-primary/10 text-primary/60 rounded-full border border-primary/20">
+                      <span className="px-2 py-1 text-xs bg-primary/10 text-primary/60 rounded-full border border-primary/20 h-fit">
                         +{project.tech.length - 3}
                       </span>
                     )}
                   </div>
                   
-                  {/* Action Buttons */}
-                  <div className="flex gap-2">
+                  {/* Action Buttons - Fixed Height at Bottom */}
+                  <div className="flex gap-2 mt-auto h-9">
                     {!project.isComingSoon && (
                       <>
                         {project.demoUrl && project.demoUrl !== '#' && (
                           <Button 
                             variant="outline" 
                             size="sm"
-                            className="flex-1 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                            className="flex-1 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 h-9"
                             onClick={(e) => {
                               e.stopPropagation();
                               window.open(project.demoUrl, '_blank');
@@ -189,7 +191,7 @@ const ProjectsSection = () => {
                           <Button 
                             variant="outline" 
                             size="sm"
-                            className="flex-1 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                            className="flex-1 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 h-9"
                             onClick={(e) => {
                               e.stopPropagation();
                               window.open(project.githubUrl, '_blank');
@@ -203,7 +205,7 @@ const ProjectsSection = () => {
                           <Button 
                             variant="outline" 
                             size="sm"
-                            className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                            className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 h-9"
                           >
                             View Project
                             <ArrowRight className="ml-1" size={14} weight="light" />
@@ -215,7 +217,7 @@ const ProjectsSection = () => {
                       <Button 
                         variant="outline" 
                         size="sm"
-                        className="w-full opacity-60 cursor-not-allowed"
+                        className="w-full opacity-60 cursor-not-allowed h-9"
                         disabled
                       >
                         Stay Tuned
