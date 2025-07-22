@@ -22,7 +22,7 @@ export const experiences: Experience[] = [
     company: "Independent Traders Academy",
     period: "Jan 2020 - Apr 2023",
     description: "Founded and scaled an academy coaching 500+ students through hands-on workshops and live-trading events that made complex financial concepts accessible. Designed and led interactive educational programs with real-world scenarios and actionable skills. Created engaging content and managed partnerships, coordinating peer-led discussions and strategy competitions. Skilled in education outreach, event management, curriculum development, partnerships, mentoring, content creation, leadership, and communication.",
-    side: "right"
+    side: "left"
   }
 ];
 
