@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from './ui/button';
-import { ArrowRight, Clock } from 'phosphor-react';
+import { ArrowRight, Clock, Github, ExternalLink } from 'phosphor-react';
 import { projects, projectsConfig } from '../data';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const gridContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -38,7 +38,7 @@ const ProjectsSection = () => {
       );
 
       // Project cards animation
-      const cards = scrollContainerRef.current?.querySelectorAll('.project-card');
+      const cards = gridContainerRef.current?.querySelectorAll('.project-card');
       if (cards) {
         gsap.fromTo(cards,
           {
@@ -59,7 +59,7 @@ const ProjectsSection = () => {
               from: "start"
             },
             scrollTrigger: {
-              trigger: scrollContainerRef.current,
+              trigger: gridContainerRef.current,
               start: "top 85%",
               end: "bottom 15%",
               toggleActions: "play none none reverse"
@@ -71,6 +71,16 @@ const ProjectsSection = () => {
 
     return () => ctx.revert();
   }, []);
+
+  const handleProjectClick = (project: typeof projects[0]) => {
+    if (project.isComingSoon) return;
+    
+    if (project.demoUrl && project.demoUrl !== '#') {
+      window.open(project.demoUrl, '_blank');
+    } else if (project.githubUrl && project.githubUrl !== '#') {
+      window.open(project.githubUrl, '_blank');
+    }
+  };
 
   return (
     <section 
@@ -89,94 +99,134 @@ const ProjectsSection = () => {
           {projectsConfig.title}
         </h2>
         
-        {/* Horizontal Scroll Container */}
+        <p className="text-center text-muted-foreground mb-16 text-lg">
+          {projectsConfig.subtitle}
+        </p>
+        
+        {/* Responsive Grid Container */}
         <div 
-          ref={scrollContainerRef}
-          className="overflow-x-auto pb-8"
+          ref={gridContainerRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-8"
         >
-          <div className="flex space-x-8 w-max">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="project-card w-80 h-[480px] flex-shrink-0 group cursor-pointer"
-              >
-                <div className={`glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan h-full flex flex-col ${project.isComingSoon ? 'border-2 border-dashed border-primary/30' : ''}`}>
-                  {/* Project Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
-                    
-                    {/* Project Icon */}
-                    <div className="absolute top-4 right-4 p-2 glass rounded-full">
-                      <project.icon size={24} className="text-primary" weight="light" />
-                    </div>
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className={`project-card group cursor-pointer ${
+                projects.length === 5 && index >= 3 ? 'xl:col-span-1' : ''
+              } ${projects.length === 5 && index === 3 ? 'xl:col-start-1' : ''} ${
+                projects.length === 5 && index === 4 ? 'xl:col-start-2' : ''
+              }`}
+              onClick={() => handleProjectClick(project)}
+            >
+              <div className={`glass rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:glow-cyan h-full flex flex-col ${
+                project.isComingSoon ? 'border-2 border-dashed border-primary/30' : ''
+              }`}>
+                {/* Project Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
+                  
+                  {/* Project Icon */}
+                  <div className="absolute top-4 right-4 p-2 glass rounded-full">
+                    <project.icon size={24} className="text-primary" weight="light" />
+                  </div>
 
-                    {/* Coming Soon Badge */}
-                    {project.isComingSoon && (
-                      <div className="absolute top-4 left-4 px-3 py-1 bg-primary/90 text-primary-foreground rounded-full text-xs font-medium flex items-center gap-1">
-                        <Clock size={12} weight="light" />
-                        Coming Soon
-                      </div>
+                  {/* Coming Soon Badge */}
+                  {project.isComingSoon && (
+                    <div className="absolute top-4 left-4 px-3 py-1 bg-primary/90 text-primary-foreground rounded-full text-xs font-medium flex items-center gap-1">
+                      <Clock size={12} weight="light" />
+                      Coming Soon
+                    </div>
+                  )}
+                </div>
+                
+                {/* Project Content */}
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-medium text-primary mb-3 group-hover:text-neon-cyan transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  
+                  <p className="text-foreground/80 mb-4 leading-relaxed text-sm flex-1">
+                    {project.description}
+                  </p>
+                  
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.slice(0, 4).map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-3 py-1 text-xs bg-primary/20 text-primary rounded-full border border-primary/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.tech.length > 4 && (
+                      <span className="px-3 py-1 text-xs bg-primary/10 text-primary/60 rounded-full border border-primary/20">
+                        +{project.tech.length - 4}
+                      </span>
                     )}
                   </div>
                   
-                  {/* Project Content */}
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl font-medium text-primary mb-3 group-hover:text-neon-cyan transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    
-                    <p className="text-foreground/80 mb-4 leading-relaxed text-sm line-clamp-3 flex-1">
-                      {project.description.length > 120 ? `${project.description.substring(0, 120)}...` : project.description}
-                    </p>
-                    
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.slice(0, 3).map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 text-xs bg-primary/20 text-primary rounded-full border border-primary/30"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.tech.length > 3 && (
-                        <span className="px-3 py-1 text-xs bg-primary/10 text-primary/60 rounded-full border border-primary/20">
-                          +{project.tech.length - 3}
-                        </span>
-                      )}
-                    </div>
-                    
-                    {/* CTA Button */}
-                    <Button 
-                      variant="outline" 
-                      className={`w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 ${project.isComingSoon ? 'opacity-60 cursor-not-allowed' : ''}`}
-                      disabled={project.isComingSoon}
-                    >
-                      {project.isComingSoon ? 'Stay Tuned' : 'View Project'}
-                      <ArrowRight className="ml-2" size={16} weight="light" />
-                    </Button>
+                  {/* Action Buttons */}
+                  <div className="flex gap-2">
+                    {!project.isComingSoon && (
+                      <>
+                        {project.demoUrl && project.demoUrl !== '#' && (
+                          <Button 
+                            variant="outline" 
+                            className="flex-1 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              window.open(project.demoUrl, '_blank');
+                            }}
+                          >
+                            <ExternalLink className="mr-2" size={16} weight="light" />
+                            Demo
+                          </Button>
+                        )}
+                        {project.githubUrl && project.githubUrl !== '#' && (
+                          <Button 
+                            variant="outline" 
+                            className="flex-1 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              window.open(project.githubUrl, '_blank');
+                            }}
+                          >
+                            <Github className="mr-2" size={16} weight="light" />
+                            Code
+                          </Button>
+                        )}
+                        {(!project.demoUrl || project.demoUrl === '#') && (!project.githubUrl || project.githubUrl === '#') && (
+                          <Button 
+                            variant="outline" 
+                            className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                          >
+                            View Project
+                            <ArrowRight className="ml-2" size={16} weight="light" />
+                          </Button>
+                        )}
+                      </>
+                    )}
+                    {project.isComingSoon && (
+                      <Button 
+                        variant="outline" 
+                        className="w-full opacity-60 cursor-not-allowed"
+                        disabled
+                      >
+                        Stay Tuned
+                        <Clock className="ml-2" size={16} weight="light" />
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="flex justify-center mt-8">
-          <div className="flex space-x-2">
-            {projects.map((_, index) => (
-              <div
-                key={index}
-                className="w-2 h-2 rounded-full bg-primary/30 hover:bg-primary transition-colors duration-200 cursor-pointer"
-              />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

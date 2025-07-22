@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -39,11 +40,11 @@ const ContactSection = () => {
           opacity: 1,
           y: 0,
           filter: "blur(0px)",
-          duration: 0.8,
-          ease: "power3.out",
+          duration: contactConfig.animations.title.duration,
+          ease: contactConfig.animations.title.ease,
           scrollTrigger: {
             trigger: titleRef.current,
-            start: "top 85%",
+            start: contactConfig.animations.title.trigger,
             end: "bottom 15%",
             toggleActions: "play none none reverse"
           }
@@ -63,12 +64,12 @@ const ContactSection = () => {
             opacity: 1,
             x: 0,
             filter: "blur(0px)",
-            duration: 0.6,
-            ease: "power3.out",
-            stagger: 0.1,
+            duration: contactConfig.animations.form.duration,
+            ease: contactConfig.animations.form.ease,
+            stagger: contactConfig.animations.form.stagger,
             scrollTrigger: {
               trigger: formRef.current,
-              start: "top 85%",
+              start: contactConfig.animations.form.trigger,
               end: "bottom 15%",
               toggleActions: "play none none reverse"
             }
@@ -89,12 +90,12 @@ const ContactSection = () => {
             opacity: 1,
             scale: 1,
             rotation: 0,
-            duration: 0.6,
-            ease: "back.out(1.7)",
-            stagger: 0.1,
+            duration: contactConfig.animations.socials.duration,
+            ease: contactConfig.animations.socials.ease,
+            stagger: contactConfig.animations.socials.stagger,
             scrollTrigger: {
               trigger: socialsRef.current,
-              start: "top 85%",
+              start: contactConfig.animations.socials.trigger,
               end: "bottom 15%",
               toggleActions: "play none none reverse"
             }
@@ -115,38 +116,52 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check if EmailJS credentials are configured
+    const serviceId = 'service_portfolio';
+    const templateId = 'template_contact';
+    const publicKey = 'YOUR_PUBLIC_KEY';
+    
+    if (serviceId === 'service_portfolio' || templateId === 'template_contact' || publicKey === 'YOUR_PUBLIC_KEY') {
+      toast({
+        title: "EmailJS Setup Required",
+        description: "Please configure EmailJS credentials first. Check the EMAILJS-SETUP.md guide for instructions.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
-      // Send email using EmailJS
-      // Note: Replace these placeholder values with your actual EmailJS configuration:
-      // 1. Sign up at https://www.emailjs.com/
-      // 2. Create a service and template
-      // 3. Replace 'service_id', 'template_id', and 'public_key' with your actual values
       const result = await emailjs.send(
-        'service_portfolio', // Replace with your service ID
-        'template_contact',  // Replace with your template ID
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
           to_email: 'yashkokate0801@gmail.com'
         },
-        'YOUR_PUBLIC_KEY' // Replace with your public key
+        publicKey
       );
       
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      
-      // Reset form
-      setFormData({ name: '', email: '', message: '' });
+      if (result.status === 200) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        
+        // Reset form
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Failed to send email');
+      }
     } catch (error) {
       console.error('EmailJS error:', error);
       toast({
         title: "Error sending message",
-        description: "Please try again or contact me directly via email.",
+        description: "Please try again or contact me directly via email at yashkokate0801@gmail.com",
         variant: "destructive",
       });
     } finally {
@@ -159,7 +174,7 @@ const ContactSection = () => {
   return (
     <section 
       ref={sectionRef}
-      id="contact" 
+      id={contactConfig.id}
       className="py-20 px-6 relative overflow-hidden"
     >
       {/* Background Effects */}
@@ -181,41 +196,31 @@ const ContactSection = () => {
           {/* Contact Form */}
           <div className="glass p-8 rounded-lg">
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="glass border-primary/20 focus:border-primary focus:glow-cyan transition-all duration-300"
-                  required
-                />
-              </div>
-              
-              <div>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="glass border-primary/20 focus:border-primary focus:glow-cyan transition-all duration-300"
-                  required
-                />
-              </div>
-              
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={5}
-                  className="glass border-primary/20 focus:border-primary focus:glow-cyan transition-all duration-300 resize-none"
-                  required
-                />
-              </div>
+              {contactData.form.fields.map((field) => (
+                <div key={field.name}>
+                  {field.type === 'textarea' ? (
+                    <Textarea
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      value={formData[field.name as keyof typeof formData]}
+                      onChange={handleInputChange}
+                      rows={field.rows || 5}
+                      className="glass border-primary/20 focus:border-primary focus:glow-cyan transition-all duration-300 resize-none"
+                      required={field.required}
+                    />
+                  ) : (
+                    <Input
+                      type={field.type}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      value={formData[field.name as keyof typeof formData]}
+                      onChange={handleInputChange}
+                      className="glass border-primary/20 focus:border-primary focus:glow-cyan transition-all duration-300"
+                      required={field.required}
+                    />
+                  )}
+                </div>
+              ))}
               
               <Button 
                 type="submit" 

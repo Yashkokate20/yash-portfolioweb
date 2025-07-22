@@ -1,39 +1,10 @@
+
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { experiences, experienceConfig } from '../data/experience';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const experiences = [
-  {
-    title: "Senior Financial Analyst",
-    company: "FinTech Solutions Inc.",
-    period: "2023 - Present",
-    description: "Leading quantitative analysis and risk assessment for high-frequency trading algorithms. Developed proprietary models that improved portfolio performance by 23%.",
-    side: "left"
-  },
-  {
-    title: "Quantitative Trader",
-    company: "Alpha Capital Management",
-    period: "2021 - 2023",
-    description: "Managed a $50M portfolio with focus on algorithmic trading strategies. Implemented machine learning models for market prediction and risk management.",
-    side: "right"
-  },
-  {
-    title: "Junior Analyst",
-    company: "Global Investment Bank",
-    period: "2020 - 2021",
-    description: "Analyzed market trends and developed trading strategies for institutional clients. Specialized in derivatives and fixed-income securities.",
-    side: "left"
-  },
-  {
-    title: "Financial Research Intern",
-    company: "Investment Research Corp",
-    period: "2019 - 2020",
-    description: "Conducted fundamental analysis on emerging markets and created detailed investment reports for portfolio managers.",
-    side: "right"
-  }
-];
 
 const ExperienceSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -121,7 +92,7 @@ const ExperienceSection = () => {
   return (
     <section 
       ref={sectionRef}
-      id="experience" 
+      id={experienceConfig.id}
       className="py-20 px-6 relative overflow-hidden"
     >
       {/* Background Effects */}
@@ -132,7 +103,7 @@ const ExperienceSection = () => {
           ref={titleRef}
           className="text-5xl md:text-6xl font-light text-center mb-20 gradient-text"
         >
-          Professional Journey
+          {experienceConfig.title}
         </h2>
         
         <div ref={timelineRef} className="relative">
