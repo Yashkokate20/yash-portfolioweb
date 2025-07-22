@@ -21,7 +21,7 @@ export const experiences: Experience[] = [
     title: "Founder",
     company: "Independent Traders Academy",
     period: "Jan 2020 - Apr 2023",
-    description: "I founded and grew an educational academy to empower over 500 students, using hands-on workshops and live trading events to break down complex financial concepts into practical, actionable knowledge. I designed and led interactive programs that brought real-world scenarios into the classroom, cultivating essential skills for success. By developing original content and dynamic presentations, I engaged audiences from diverse backgrounds, fostering a vibrant community of learners. I also established and managed partnerships with both academic and informal groups, coordinating a variety of events—from peer-led discussions to strategy competitions—that encouraged collaboration, mentorship, and shared growth. My journey reflects a passion for education outreach, event management, curriculum development, and community building, underpinned by strong skills in leadership, communication, and content creation.",
+    description: "Founded and scaled an academy coaching 500+ students through hands-on workshops and live-trading events that made complex financial concepts accessible. Designed and led interactive educational programs with real-world scenarios and actionable skills. Created engaging content and managed partnerships, coordinating peer-led discussions and strategy competitions. Skilled in education outreach, event management, curriculum development, partnerships, mentoring, content creation, leadership, and communication.",
     side: "right"
   }
 ];
