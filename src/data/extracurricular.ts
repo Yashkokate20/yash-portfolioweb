@@ -78,6 +78,14 @@ export const extracurricularActivities: ExtracurricularActivity[] = [
     size: "medium",
     color: "text-neon-cyan",
     category: "Sports"
+  },
+  {
+    title: "Academic Excellence Award",
+    description: "Recognized for outstanding academic performance and scholarly achievements at St. Rock's High School. Demonstrated consistent excellence across subjects with strong analytical thinking, problem-solving skills, and dedication to learning.",
+    icon: BookOpen,
+    size: "large",
+    color: "text-neon-orange",
+    category: "Academic"
   }
   // TODO: Add more activities as needed
   // You can easily add more entries here by copying the template above

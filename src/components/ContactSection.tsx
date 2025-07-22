@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import emailjs from '@emailjs/browser';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -117,10 +118,23 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // For now, we'll simulate submission - Supabase integration will replace this
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Send email using EmailJS
+      // Note: Replace these placeholder values with your actual EmailJS configuration:
+      // 1. Sign up at https://www.emailjs.com/
+      // 2. Create a service and template
+      // 3. Replace 'service_id', 'template_id', and 'public_key' with your actual values
+      const result = await emailjs.send(
+        'service_portfolio', // Replace with your service ID
+        'template_contact',  // Replace with your template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'yashkokate0801@gmail.com'
+        },
+        'YOUR_PUBLIC_KEY' // Replace with your public key
+      );
       
-      // Show success message
       toast({
         title: "Message sent successfully!",
         description: "Thank you for reaching out. I'll get back to you soon.",
@@ -129,6 +143,7 @@ const ContactSection = () => {
       // Reset form
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('EmailJS error:', error);
       toast({
         title: "Error sending message",
         description: "Please try again or contact me directly via email.",
