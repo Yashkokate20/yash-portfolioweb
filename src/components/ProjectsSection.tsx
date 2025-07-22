@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from './ui/button';
-import { ArrowRight, Clock, Github, ExternalLink } from 'phosphor-react';
+import { ArrowRight, Clock, GithubLogo, ArrowSquareOut } from 'phosphor-react';
 import { projects, projectsConfig } from '../data';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -184,7 +184,7 @@ const ProjectsSection = () => {
                               window.open(project.demoUrl, '_blank');
                             }}
                           >
-                            <ExternalLink className="mr-2" size={16} weight="light" />
+                            <ArrowSquareOut className="mr-2" size={16} weight="light" />
                             Demo
                           </Button>
                         )}
@@ -197,7 +197,7 @@ const ProjectsSection = () => {
                               window.open(project.githubUrl, '_blank');
                             }}
                           >
-                            <Github className="mr-2" size={16} weight="light" />
+                            <GithubLogo className="mr-2" size={16} weight="light" />
                             Code
                           </Button>
                         )}
