@@ -22,7 +22,7 @@ export const siteConfig = {
   // Social media profiles (consistent URLs across site)
   social: {
     linkedin: "https://www.linkedin.com/in/yashkokate/",
-    github: "https://github.com/yashkokate",
+    github: "https://github.com/Yashkokate20?tab=repositories",
     email: "ykokate@stevens.edu"
   },
 

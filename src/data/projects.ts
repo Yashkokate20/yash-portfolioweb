@@ -43,7 +43,7 @@ export const projects: Project[] = [
     tech: ["Google Gemini", "Node.js", "API Integration", "GitHub", "Telegram Bot", "TradingView Charts"],
     icon: Robot,
     gradient: "from-neon-cyan to-neon-purple",
-    githubUrl: "#" // TODO: Add your actual GitHub URL
+    githubUrl: "https://github.com/Yashkokate20?tab=repositories"
   },
   {
     title: "Investment Risk Management",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     tech: ["Financial Metrics", "Beta Calculation", "VaR Analysis", "Treynor Ratio", "Risk Assessment", "Data Visualization"],
     icon: ShieldCheck,
     gradient: "from-neon-purple to-neon-pink",
-    demoUrl: "#" // TODO: Add demo link if available
+    githubUrl: "https://github.com/Yashkokate20?tab=repositories"
   },
   {
     title: "A Study on Stock Market (Research Project)",
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     tech: ["Market Research", "NSE & BSE Analysis", "Investment Principles", "Regulatory Frameworks", "Financial Analysis", "Research Methodology"],
     icon: ChartLineUp,
     gradient: "from-neon-pink to-neon-orange",
-    demoUrl: "#" // TODO: Add research document link
+    githubUrl: "https://github.com/Yashkokate20?tab=repositories"
   },
   // NEW: Coming Soon Projects (easily editable)
   {
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     tech: ["FinTech", "Innovation", "Analytics", "Technology"],
     icon: Rocket,
     gradient: "from-neon-green to-neon-cyan",
-    githubUrl: "#", // Will be updated when project is ready
+    githubUrl: "https://github.com/Yashkokate20?tab=repositories",
     isComingSoon: true
   },
   {
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     tech: ["Artificial Intelligence", "Machine Learning", "Market Analysis", "Predictive Analytics"],
     icon: Brain,
     gradient: "from-neon-orange to-neon-red",
-    demoUrl: "#", // Will be updated when project is ready
+    githubUrl: "https://github.com/Yashkokate20?tab=repositories",
     isComingSoon: true
   }
 ];

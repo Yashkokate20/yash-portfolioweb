@@ -35,7 +35,7 @@ export const contactInfo = {
   location: "Hoboken, NJ",
   social: {
     linkedin: "https://linkedin.com/in/yashkokate",
-    github: "https://github.com/yashkokate",
+    github: "https://github.com/Yashkokate20?tab=repositories",
     twitter: "https://twitter.com/yashkokate"
   }
 };

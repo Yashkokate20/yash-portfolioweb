@@ -34,7 +34,7 @@ export const footerData = {
     },
     { 
       icon: GithubLogo, 
-      url: 'https://github.com/yashkokate', 
+      url: 'https://github.com/Yashkokate20?tab=repositories', 
       label: 'GitHub' 
     },
     { 

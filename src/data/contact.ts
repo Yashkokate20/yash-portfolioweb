@@ -46,7 +46,7 @@ export const contactData = {
     },
     { 
       icon: GithubLogo, 
-      url: 'https://github.com/yashkokate', 
+      url: 'https://github.com/Yashkokate20?tab=repositories', 
       label: 'GitHub', 
       color: 'hover:text-neon-purple' 
     },
